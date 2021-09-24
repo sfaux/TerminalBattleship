@@ -1,0 +1,169 @@
+
+//grid format idea
+	  A   B   C   D
+	 ---------------
+1	| . |   |   |   |
+	 ---------------
+2	|   | x |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	|   |   |   |   |
+	 ---------------
+
+Ships:
+1, 2, 3 long
+x 
+
+xx
+
+xxx
+
+
+(Example of starting game)
+###############################################
+
+Player 1, enter the location of your 1 length ship:
+>>> B1
+	  A   B   C   D
+	 ---------------
+1	|   | 1 |   |   |
+	 ---------------
+2	|   |   |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	|   |   |   |   |
+	 ---------------
+
+Player 1, enter vertical (v) or horizontal (h) for the orientation
+of your 2 length ship:
+>>> h
+Player 1, enter the location of the left most coordinate 
+of your 2 length ship:
+>>> A4
+
+	  A   B   C   D
+	 ---------------
+1	|   | 1 |   |   |
+	 ---------------
+2	|   |   |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	| 2 | 2 |   |   |
+	 ---------------
+
+Player 1, enter vertical (v) or horizontal (h) for the orientation
+of your 3 length ship:
+>>> v
+Player 1, enter the location of the top most coordinate 
+of your 3 length ship:
+>>> B2
+
+*That location overlaps with another ship at coordinate B4, choose again*
+
+Player 1, enter the location of the top most coordinate 
+of your 3 length ship:
+>>> C3
+
+*The ship of length 3 will be off the grid with the top at coordinate C3, choose again*
+
+Player 1, enter the location of the top most coordinate 
+of your 3 length ship:
+>>> D2
+
+	  A   B   C   D
+	 ---------------
+1	|   | 1 |   |   |
+	 ---------------
+2	|   |   |   | 3 |
+	 ---------------
+3	|   |   |   | 3 |
+	 ---------------
+4	| 2 | 2 |   | 3 |
+	 ---------------
+
+Player 1's ships are set. Player 2's turn to set ship locations
+
+...
+//player 2 sets up
+...
+###############################################
+
+Player 1's turn - ships currently sunk: (none)
+
+	  A   B   C   D
+	 ---------------
+1	|   |   |   |   |
+	 ---------------
+2	|   |   |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	|   |   |   |   |
+	 ---------------
+
+Player 1 - enter a coordinate to fire on:
+>>> C1
+
+C1 is a miss.
+------------------------------------------------
+
+Player 2's turn - ships currently sunk: (none)
+
+	  A   B   C   D
+	 ---------------
+1	|   |   |   |   |
+	 ---------------
+2	|   |   |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	|   |   |   |   |
+	 ---------------
+
+Player 2 - enter a coordinate to fire on:
+>>> A4
+
+// **3 scenarios - miss, hit but ship not sunk, hit and sunk**
+(1.)
+A4 is a hit! No ships sunk. Fire again:
+>>> B4
+
+(2.)
+A4 is a hit! The ship of length X has been sunk. Fire again:
+>>> ...
+
+(3.)
+A4 is a miss.
+
+------------------------------------------------
+// (grid now updated to show miss from previous turn)
+
+Player 1's turn - ships currently sunk: (none)
+
+	  A   B   C   D
+	 ---------------
+1	|   |   | . |   |
+	 ---------------
+2	|   |   |   |   |
+	 ---------------
+3	|   |   |   |   |
+	 ---------------
+4	|   |   |   |   |
+	 ---------------
+
+Player 1 - enter a coordinate to fire on:
+>>> 
+
+------------------------------------------------
+(turns keep going until all of one player's ships are sunk)
+
+Player 2 wins!
+Play again? (y/n/quit)
+
+
+
+
+
