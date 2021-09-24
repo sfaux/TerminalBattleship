@@ -1,0 +1,55 @@
+Terminal Battleship Planning
+
+-fixed grid size (letters on top, numbers on side)
+	- 5x5 initially
+-player chooses location of ships
+	-ask for point/direction
+-3 ships (lengths 1, 2, 3)
+
+Classes:
+	- Grid
+		- each player has one
+		- Grid objects have access to the ships on it
+
+		*instance vars*
+		.int gridSize //
+		.ArrayList<Ship> ships
+		.2D arraylist of squares - squaresChosen 
+			(T - space been picked/bombed, F - not been picked)
+		.int shipsRemaining - keeps track of whole # ships not yet sunk
+
+		*methods*
+		-conventional getters and setters
+		-public Boolean bomb(int[] square) - change that square in 	
+			squaresChosen to true
+			-returns True when ship is hit, False for miss
+		-public Boolean makeShip(Ship s)
+			-returns True is ship is created and placed in valid location
+		-public Boolean isSquareEmpty(int[] square)
+
+
+	- Square
+		*instance vars*
+		int x, y //x and y coordinates
+		boolean hasBeenHit
+
+		*methods*
+		-getters and setters
+
+#####################
+	- Ship 
+		- (needs to know it's coordinates on the grid)
+		- needs to know which coordinates have been bombed and which hasn't
+
+		*instance vars*
+		int size
+		ArrayList<Square> squares
+
+		Boolean hasBeenSunk //true if totally sunk
+
+#####################
+
+	- Driver class
+
+
+
