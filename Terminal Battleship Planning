@@ -20,18 +20,22 @@ Classes:
 
 		*methods*
 		-conventional getters and setters
-		-public Boolean bomb(int[] square) - change that square in 	
+		-public Boolean bomb(int x, int y) - change that square in 	
 			squaresChosen to true
 			-returns True when ship is hit, False for miss
+			- update hasBeenSunk
+			- update hasBeenHit
 		-public Boolean makeShip(Ship s)
 			-returns True is ship is created and placed in valid location
-		-public Boolean isSquareEmpty(int[] square)
+			- set squares to shipOn
+		-public Boolean isSquareEmpty(int x, int y)
 
 
 	- Square
 		*instance vars*
 		int x, y //x and y coordinates
 		boolean hasBeenHit
+		boolean hasShipOn
 
 		*methods*
 		-getters and setters
@@ -50,6 +54,32 @@ Classes:
 #####################
 
 	- Driver class
+		*instant vars*
+		Grid user1
+		Grid user2
+		boolean isUser1Turn
+		int user1Score
+		int user2Score
+
+		- public int[] toSquare(String str) {}
+		- public void resetGame() {}
+		- public void drawGrid(Grid grid) {}
+		- public void takeTurn() {}
+			- get user input for coordinates (check input)
+			- convert those to a square in grid
+			- bomb square
+			- if bs false
+				- isUser1Turn updated
+			- drawGrid
+			- check if shipsRemaining is 0, then resetGame()
+		- public void placeShips() {}
+			- get user input for pt and dir
+			- check if valid
+			- instantiate new ship
+			- Ship ship = new Ship()
+			- call makeShip(Ship ship)
+			- x2 or loop
+
 
 
 
