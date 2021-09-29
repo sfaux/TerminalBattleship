@@ -1,31 +1,43 @@
 import java.util.*;
 
 public class Ship {
-	int size;
 	ArrayList<Square> squares;
-	int x1, y1, x2, y2;
+	int x, y, orientation, size;
 
-	public Ship(int x1, int y1, int x2, int y2, int size){
+//for orientation: 0 is horizontal, 1 is vertical
+	public Ship(int x, int y, int orientation, int size){
 		this.size = size;
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
+		this.x = x;
+		this.y = y;
 		findCoord();
 	}
 
 	public void findCoord(){
 		squares = new ArrayList<Square>(size);
-
+		for (int i = 0; i < size; i++){
+			if (orientation == 0){
+				squares.add(new Square(x + i, y));
+			} else {
+				squares.add(new Square(x, y + i));
+			}
+		}
 	}
 
 	public boolean hasBeenSunk(){
 		for (Square s : squares){
-			if (s.getHasBeenHit() == false){
+			if (s.hasBeenHit() == false){
 				return false;
 			}
 		}
 		return true;
+	}
+
+	public void setSquares(ArrayList<Square> newarr){
+		squares = newarr;
+	}
+
+	public ArrayList<Square> getSquares(){
+		return squares;
 	}
 
 }

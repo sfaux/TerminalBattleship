@@ -25,7 +25,7 @@ public class Square {
 		this.y = y;
 	}
 
-	public boolean getHasShip(){
+	public boolean hasShip(){
 		return hasShip;
 	}
 
@@ -33,7 +33,7 @@ public class Square {
 		hasShip = bool;
 	}
 
-	public boolean getHasBeenHit(){
+	public boolean hasBeenHit(){
 		return hasBeenHit;
 	}
 
