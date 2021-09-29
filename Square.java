@@ -49,6 +49,7 @@ public class Square {
 		return result;
 	}
 
+	/*
 	public static void main(String[] args) {
 		Square s1 = new Square(1, 1);
 		System.out.println(s1);
@@ -59,5 +60,6 @@ public class Square {
 		s2.setHasBeenHit(true);
 		System.out.println(s2);
 	}
+	*/
 
 }
