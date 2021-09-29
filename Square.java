@@ -2,7 +2,7 @@ public class Square {
 	private int x, y;
 	private boolean hasShip, hasBeenHit;
 
-	public Square(x, y){
+	public Square(int x, int y){
 		this.x = x;
 		this.y = y;
 		hasShip = false;
@@ -26,7 +26,7 @@ public class Square {
 	}
 
 	public boolean getHasShip(){
-		return hasShip();
+		return hasShip;
 	}
 
 	public void sethasShip(boolean bool){
@@ -41,5 +41,5 @@ public class Square {
 		hasBeenHit = bool;
 	}
 
-	
+
 }

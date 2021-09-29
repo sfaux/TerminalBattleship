@@ -1,7 +1,9 @@
+import java.util.*;
+
 public class Ship {
 	int size;
 	ArrayList<Square> squares;
-	int x1, y1, x2, y2
+	int x1, y1, x2, y2;
 
 	public Ship(int x1, int y1, int x2, int y2, int size){
 		this.size = size;
@@ -14,11 +16,11 @@ public class Ship {
 
 	public void findCoord(){
 		squares = new ArrayList<Square>(size);
-		
+
 	}
 
 	public boolean hasBeenSunk(){
-		for (s : squares){
+		for (Square s : squares){
 			if (s.getHasBeenHit() == false){
 				return false;
 			}
