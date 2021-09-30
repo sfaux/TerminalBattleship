@@ -21,6 +21,9 @@ public class Ship {
 				squares.add(new Square(x, y + i));
 			}
 		}
+		for (Square s : squares){
+			s.sethasShip(true);
+		}
 	}
 
 	public boolean hasBeenSunk(){
