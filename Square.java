@@ -44,8 +44,7 @@ public class Square {
 	public String toString() {
 		String result = "";
 		result += "Ship at (x,y): (" + this.x + "," + this.y + ")\n";
-		result += "hasShip: " + this.hasShip + "  hasBeenHit: " +
-					hasBeenHit; 
+		result += "hasShip: " + this.hasShip + "  hasBeenHit: " + hasBeenHit; 
 		return result;
 	}
 

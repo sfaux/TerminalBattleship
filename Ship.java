@@ -40,4 +40,14 @@ public class Ship {
 		return squares;
 	}
 
+	public String toString(){
+		String toReturn = "";
+		toReturn += (orientation == 0) ? "Orientation: Horizontal" : "Orientation: Vertical" ;
+		toReturn += "\nSize: " + size;
+		for (Square s : squares){
+			toReturn += "\nX: " + s.getx() + "  Y: " + s.gety();
+		}
+		return toReturn;
+	}
+
 }
