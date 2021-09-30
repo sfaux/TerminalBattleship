@@ -33,7 +33,7 @@ public class Driver {
 		return toReturn;
 	}
 
-	public void resetGame(){
+	private void resetGame(){
 		user1 = new Grid(gridSize);
 		user2 = new Grid(gridSize);
 		if(isUser1Turn){
@@ -44,7 +44,7 @@ public class Driver {
 		isUser1Turn = true;
 	}
 
-	public void drawGrid(Grid grid){
+	private void drawGrid(Grid grid){
 		for(int i = 1; i <= gridSize; i++){ //top row (list of A    B    C    D    E    F...)
 			char toWrite = (char) (i + 64);
 			System.out.print("   " + toWrite);
@@ -130,6 +130,11 @@ public class Driver {
 
 		}
 		
+	}
+
+	public void placeShips(Grid grid){
+
+
 	}
 
 	private Square getSquare(int x, int y, ArrayList<Square> squares){
