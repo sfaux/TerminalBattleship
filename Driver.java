@@ -55,6 +55,8 @@ public class Driver {
 			for(int numVertLine = 0; numVertLine <= gridSize; numVetLine++){
 				
 				if(isUser1Turn){ //drawing user2 grid then
+					ArrayList<Square> user2Squares = user2.getSquares();
+
 					
 				}
 
@@ -66,6 +68,10 @@ public class Driver {
 		}
 
 
+	}
+
+	private Square getSquare(int x, int y, ArrayList<Square> squares){
+		
 	}
 	
 
