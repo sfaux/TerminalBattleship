@@ -42,7 +42,7 @@ public class Grid {
 		//if (squaresChosen.get(x).get(y).getHasBeenHit() == false) {
 		for(square : squaresChosen)
 		{
-			if (square.getX() == x && square.getY() == y)
+			if (square.getx() == x && square.gety() == y)
 			{
 				square.setHasBeenHit(true);
 			}
@@ -51,11 +51,11 @@ public class Grid {
 
 			for (ship : ships) {
 				for (square : ship.getSquares()) {
-					if (square.getY() == y && square.getX() == x) {
+					if (square.gety() == y && square.getx() == x) {
 						square.setHasBeenHit(true);
 						isHit = true;
 					}
-					if (square.getHasBeenHit() == false) {
+					if (square.hasBeenHit() == false) {
 						allShipsSunk = false;
 					}
 				}
@@ -76,7 +76,7 @@ public class Grid {
 	public boolean makeShip(Ships s) {
 		ships.add(s);
 		for (square : s.getSquares()) {
-			square.setHasShipOn(true);
+			square.sethasShip(true);
 		}
 	}
 
