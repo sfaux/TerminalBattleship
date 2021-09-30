@@ -4,13 +4,13 @@ public class Grid {
 
 	private int gridSize;
 	private ArrayList<Ship> ships;
-	private ArrayList<ArrayList<Square>> squaresChosen;
+	private ArrayList<Square> squaresChosen;
 	private int shipsRemaining;
 
 	public Grid(int gs) {
 		gridSize = gs;
 		ships = new ArrayList<Ship>();
-		squaresChosen = new ArrayList<ArrayList<Square>>();
+		squaresChosen = new ArrayList<Square>();
 		shipsRemaining = 3;
 	}
 
@@ -22,7 +22,7 @@ public class Grid {
 		shipsRemaining = n;
 	}
 
-	public ArrayList<ArrayList<Square>> getSquaresChosen() {
+	public ArrayList<Square> getSquaresChosen() {
 		return squaresChosen;
 	}
 
@@ -31,7 +31,13 @@ public class Grid {
 		boolean allShipsSunk = true;
 		boolean isHit = false;
 		//if (squaresChosen.get(x).get(y).getHasBeenHit() == false) {
-			squaresChosen.get(x).get(y).setHasBeenHit(true);
+		for(square : squaresChosen)
+		{
+			if (square.getX() == x && square.getY() == y)
+			{
+				square.setHasBeenHit(true);
+			}
+		}
 
 
 			for (ship : ships) {
@@ -65,12 +71,12 @@ public class Grid {
 		}
 	}
 
-	public boolean isSquareEmpty(int x, int y) {
+	/*public boolean isSquareEmpty(int x, int y) {
 		if (squaresChosen.get(x).get(y).getHasShipOn() == false) {
 			return true;
 		} else {
 			return false;
 		}
-	}
+	}*/
 
 }
