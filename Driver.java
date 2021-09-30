@@ -53,9 +53,22 @@ public class Driver {
 
 			System.out.print(row + "  ");
 			for(int numVertLine = 0; numVertLine <= gridSize; numVetLine++){
+				String toAdd = "";
 				
-				if(isUser1Turn){ //drawing user2 grid then
+				if(isUser1Turn && numVertLine != gridSize){ //drawing user2 grid then
 					ArrayList<Square> user2Squares = user2.getSquares();
+					Square square = getSquare(numVertLine, row-1, user2Squares); //wrong possibly
+					if(square.hasBeenHit() == false){
+						toAdd = " ";
+
+					} else if(square.hasBeenHit() == true){
+						if(square.hasShip() == true){
+							toAdd += missMarker;
+
+						} else{ //square does not have a ship on
+							toAdd += hitMarker;
+						}
+					}
 
 					
 				}
@@ -71,7 +84,13 @@ public class Driver {
 	}
 
 	private Square getSquare(int x, int y, ArrayList<Square> squares){
-		
+		for(Square square : squares){
+			if(square.getx() == x && square.gety() == y){
+				return square;
+			}
+		}
+
+		return null;
 	}
 	
 
