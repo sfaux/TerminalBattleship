@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Driver {
 	public static void main(String[] args){
 		int gridSize = 5;
@@ -20,6 +22,11 @@ public class Driver {
 		int xCoordinateValue = (int) xCoordinate - 97;
 
 		int yCoordinateValue =  Integer.parseInt(str.substring(1)) - 1;
+
+		if(xCoordinateValue < 0 || yCoordinateValue < 0 || xCoordinateValue > gridSize - 1 || yCoordinateValue > gridSize - 1){
+			return null;
+
+		}
 
 		Square toReturn = new Square(xCoordinateValue, yCoordinateValue);
 
@@ -58,7 +65,7 @@ public class Driver {
 				if(isUser1Turn && numVertLine != gridSize){ //drawing user2 grid then
 					ArrayList<Square> user2Squares = user2.getSquares();
 					Square square = getSquare(numVertLine, row-1, user2Squares); //wrong possibly
-					if(square.hasBeenHit() == false){
+					if(square == null || square.hasBeenHit() == false){
 						toAdd = " ";
 
 					} else if(square.hasBeenHit() == true){
@@ -73,14 +80,56 @@ public class Driver {
 					
 				}
 
-				System.out.print("| ");
+				System.out.print("| " + toAdd + " ");
 			}
-			
-
-
 		}
 
+	}
 
+	public void takeTurn(){
+		Scanner scan = new Scanner(System.in);
+		if(isUser1Turn){
+			System.out.println("It's user 1's turn!");
+			drawGrid(user2);
+
+		} else{
+			System.out.println("It's user 2's turn!");
+			drawGrid(user1);
+		}
+
+		System.out.println("Type in the coordinates of the square you seek to bomb (letter;number)");
+		String coordinate = scan.nextLine();
+
+		Square tempSquare = toSquare(coordinate);
+		if(tempSquare == null){
+			takeTurn();
+			return;
+		}
+		if(isUser1Turn){
+			if(user2.bomb(tempSquare.getx(), tempSquare.gety()) == false){
+				isUser1Turn = false;
+			}
+		} else{
+			if(user2.bomb(tempSquare.getx(), tempSquare.gety()) == false){
+				isUser1Turn = true;
+			}
+		}
+
+		if(isUser1Turn){
+			drawGrid(user2);
+			if(user2.getShipsRemaining() < 1){
+				user1Score++;
+				resetGame();
+			}
+		} else{
+			drawGrid(user1);
+			if(user1.getShipsRemaining() < 1){
+				user2Score++;
+				resetGame();
+			}
+
+		}
+		
 	}
 
 	private Square getSquare(int x, int y, ArrayList<Square> squares){
