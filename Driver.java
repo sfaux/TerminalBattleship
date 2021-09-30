@@ -132,9 +132,22 @@ public class Driver {
 		
 	}
 
-	public void placeShips(Grid grid){
+	public void placeShip(Grid grid){
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Type a point for you 1 by 1 ship");
+		String coordinates = scan.nextLine();
+		Square tempSquare = toSquare(coordinates);
+		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), 0, 1);
 
 
+
+
+
+	}
+
+	public void placeShips(Grid grid, int numShips){
+		
 	}
 
 	private Square getSquare(int x, int y, ArrayList<Square> squares){
