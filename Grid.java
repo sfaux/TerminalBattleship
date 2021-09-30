@@ -12,6 +12,15 @@ public class Grid {
 		ships = new ArrayList<Ship>();
 		squaresChosen = new ArrayList<Square>();
 		shipsRemaining = 3;
+
+		for(int i = 0; i<gs; i++)
+		{
+			for(int j = 0; j<gs; j++)
+			{
+				Square s = new Square(i, j, false, false); 
+				squaresChosen.add(s)
+			}
+		}
 	}
 
 	public int getShipsRemaining() {
