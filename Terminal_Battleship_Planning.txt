@@ -67,7 +67,7 @@ Classes:
 		- public void takeTurn() {}
 			- get user input for coordinates (check input)
 			- convert those to a square in grid
-			- bomb square
+			- bomb square- make sure to test if square has been bombed before!!! 
 			- if bs false
 				- isUser1Turn updated
 			- drawGrid
