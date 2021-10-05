@@ -132,13 +132,31 @@ public class Driver {
 		
 	}
 
-	public void placeShip(Grid grid){
+	public void placeShip(Grid grid, int shipWidth){
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Type a point for you 1 by 1 ship");
+		System.out.println("Type a point for you 1 by " + shipWidth + " ship");
 		String coordinates = scan.nextLine();
 		Square tempSquare = toSquare(coordinates);
-		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), 0, 1);
+		boolean works = false;
+		String direction = "";
+		while(works == false){
+			System.out.println("Type r to go to the right and d to go down");
+			direction = scan.nextLine().toLowerCase();
+			if(direction.equals("r") == true || direction.equals("d")) == true){
+				works = true;
+			}
+
+		}
+
+		int dir = 1;
+
+		if(direction.equals("r")){
+			dir = 0;
+		}
+
+		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), dir, shipWidth);
+		grid.makeShip(tempShip);
 
 
 
@@ -147,6 +165,9 @@ public class Driver {
 	}
 
 	public void placeShips(Grid grid, int numShips){
+		for(int i = 1; i <= numShips; i++){
+			placeShip(grid, i);
+		}
 		
 	}
 
