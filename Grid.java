@@ -40,28 +40,27 @@ public class Grid {
 		boolean allShipsSunk = true;
 		boolean isHit = false;
 		//if (squaresChosen.get(x).get(y).getHasBeenHit() == false) {
-		for(square : squaresChosen)
+		for(Square square : squaresChosen)
 		{
-			if (square.getX() == x && square.getY() == y)
+			if (square.getx() == x && square.gety() == y)
 			{
 				square.setHasBeenHit(true);
 			}
 		}
 
 
-			for (ship : ships) {
-				for (square : ship.getSquares()) {
-					if (square.getY() == y && square.getX() == x) {
+			for (Ship ship : ships) {
+				for (Square square : ship.getSquares()) {
+					if (square.gety() == y && square.getx() == x) {
 						square.setHasBeenHit(true);
 						isHit = true;
 					}
-					if (square.getHasBeenHit() == false) {
+					if (square.hasBeenHit() == false) {
 						allShipsSunk = false;
 					}
 				}
 
 				if (allShipsSunk == true) {
-					ship.setHasBeenSunk(true);
 					shipsRemaining = shipsRemaining -1;
 				}
 			}
@@ -73,11 +72,32 @@ public class Grid {
 
 	}
 
-	public boolean makeShip(Ships s) {
-		ships.add(s);
-		for (square : s.getSquares()) {
-			square.setHasShipOn(true);
+	public boolean placeShip(Ship s) {
+		for (Square square : s.getSquares()) {
+			if ((square.getx() >= gridSize || square.getx() < 0)&&(square.gety() >= gridSize || square.gety() < 0)) {
+				return false;
+			}
 		}
+	
+
+		for (Ship ship : ships) {
+			for (Square square : ship.getSquares()) {
+				for (Square sq : s.getSquares()) {
+					if (square.getx() == sq.getx() && square.gety() == sq.gety()) {
+						return false;
+					}
+				}
+			}
+		}
+
+		
+		for (Square square : s.getSquares()) {
+			square.sethasShip(true);
+		}
+
+		ships.add(s);
+
+		return true;
 	}
 
 	/*public boolean isSquareEmpty(int x, int y) {
