@@ -6,6 +6,7 @@ public class Driver {
 
 		Grid user1 = new Grid(gridSize);
 		Grid user2 = new Grid(gridSize);
+		boolean gameReset = false;
 
 		boolean isUser1Turn = true;
 		int user1Score = 0;
@@ -13,6 +14,20 @@ public class Driver {
 
 		String missMarker = ".";
 		String hitMarker = "x";
+
+		//START RUNNING THE GAME
+
+		drawGrid(user1);
+		placeShips(user1, 3);
+
+		drawGrid(user2);
+		placeShips(user2, 3);
+
+		while(gameReset == false){
+			takeTurn();
+		}
+
+
 
 	}
 
@@ -42,6 +57,7 @@ public class Driver {
 			user2Score++;
 		}
 		isUser1Turn = true;
+		gameReset = true;
 	}
 
 	private void drawGrid(Grid grid){
