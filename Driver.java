@@ -32,19 +32,35 @@ public class Driver {
 
 		Driver driver = new Driver(5);
 
-		driver.drawGrid(user1);
-		driver.placeShips(user1, 3);
+		driver.drawGrid(driver.getUser1());
+		driver.placeShips(driver.getUser1(), 3);
 
-		driver.drawGrid(user2);
-		driver.placeShips(user2, 3);
+		driver.drawGrid(driver.getUser2());
+		driver.placeShips(driver.getUser2(), 3);
 
-		while(gameReset == false){
+		while(driver.getGameReset() == false){
 			driver.takeTurn();
 		}
 
 
 
 	}
+
+	public Grid getUser1(){
+		return user1;
+
+	} 
+
+	public Grid getUser2(){
+		return user2;
+
+	} 
+
+	public boolean getGameReset(){
+		return gameReset;
+	}
+
+
 
 	public Square toSquare(String str){
 		str.toLowerCase();
