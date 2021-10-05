@@ -21,6 +21,9 @@ public class Ship {
 				squares.add(new Square(x, y + i));
 			}
 		}
+		for (Square s : squares){
+			s.sethasShip(true);
+		}
 	}
 
 	public boolean hasBeenSunk(){
@@ -38,6 +41,22 @@ public class Ship {
 
 	public ArrayList<Square> getSquares(){
 		return squares;
+	}
+
+	public int getOrientation(){
+		return orientation;
+	}
+
+	public int getSize(){
+		return size;
+	}
+
+	public int getx(){
+		return x;
+	}
+
+	public int gety(){
+		return y;
 	}
 
 	public String toString(){
