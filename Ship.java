@@ -43,6 +43,22 @@ public class Ship {
 		return squares;
 	}
 
+	public int getOrientation(){
+		return orientation;
+	}
+
+	public int getSize(){
+		return size;
+	}
+
+	public int getx(){
+		return x;
+	}
+
+	public int gety(){
+		return y;
+	}
+
 	public String toString(){
 		String toReturn = "";
 		toReturn += (orientation == 0) ? "Orientation: Horizontal" : "Orientation: Vertical" ;
