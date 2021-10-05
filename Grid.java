@@ -17,8 +17,8 @@ public class Grid {
 		{
 			for(int j = 0; j<gs; j++)
 			{
-				Square s = new Square(i, j, false, false); 
-				squaresChosen.add(s)
+				Square s = new Square(i, j); 
+				squaresChosen.add(s);
 			}
 		}
 	}
