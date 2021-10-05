@@ -1,37 +1,52 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Driver {
-	public static void main(String[] args){
-		int gridSize = 5;
 
-		Grid user1 = new Grid(gridSize);
-		Grid user2 = new Grid(gridSize);
-		boolean gameReset = false;
+	private int gridSize;
+	private Grid user1;
+	private Grid user2;
+	private boolean gameReset;
+	private boolean isUser1Turn;
+	private int user1Score;
+	private int user2Score;
+	private String missMarker, hitMarker;
 
-		boolean isUser1Turn = true;
-		int user1Score = 0;
-		int user2Score = 0;
 
+	public Driver(int gS){
+		gridSize = gS;
+		user1 = new Grid(gridSize);
+		user2 = new Grid(gridSize);
+		gameReset = false;
+		isUser1Turn = true;
+		user1Score = 0;
+		user2Score = 0;
 		String missMarker = ".";
 		String hitMarker = "x";
 
-		//START RUNNING THE GAME
 
-		drawGrid(user1);
-		placeShips(user1, 3);
+	}
 
-		drawGrid(user2);
-		placeShips(user2, 3);
+
+	public static void main(String[] args){
+
+		Driver driver = new Driver(5);
+
+		driver.drawGrid(user1);
+		driver.placeShips(user1, 3);
+
+		driver.drawGrid(user2);
+		driver.placeShips(user2, 3);
 
 		while(gameReset == false){
-			takeTurn();
+			driver.takeTurn();
 		}
 
 
 
 	}
 
-	protected Square toSquare(String str){
+	public Square toSquare(String str){
 		str.toLowerCase();
 		char xCoordinate = str.charAt(0);
 		int xCoordinateValue = (int) xCoordinate - 97;
@@ -48,7 +63,7 @@ public class Driver {
 		return toReturn;
 	}
 
-	private void resetGame(){
+	public void resetGame(){
 		user1 = new Grid(gridSize);
 		user2 = new Grid(gridSize);
 		if(isUser1Turn){
@@ -60,7 +75,7 @@ public class Driver {
 		gameReset = true;
 	}
 
-	private void drawGrid(Grid grid){
+	public void drawGrid(Grid grid){
 		for(int i = 1; i <= gridSize; i++){ //top row (list of A    B    C    D    E    F...)
 			char toWrite = (char) (i + 64);
 			System.out.print("   " + toWrite);
@@ -75,11 +90,11 @@ public class Driver {
 
 
 			System.out.print(row + "  ");
-			for(int numVertLine = 0; numVertLine <= gridSize; numVetLine++){
+			for(int numVertLine = 0; numVertLine <= gridSize; numVertLine++){
 				String toAdd = "";
 				
 				if(isUser1Turn && numVertLine != gridSize){ //drawing user2 grid then
-					ArrayList<Square> user2Squares = user2.getSquares();
+					ArrayList<Square> user2Squares = user2.getSquaresChosen();
 					Square square = getSquare(numVertLine, row-1, user2Squares); //wrong possibly
 					if(square == null || square.hasBeenHit() == false){
 						toAdd = " ";
@@ -159,7 +174,7 @@ public class Driver {
 		while(works == false){
 			System.out.println("Type r to go to the right and d to go down");
 			direction = scan.nextLine().toLowerCase();
-			if(direction.equals("r") == true || direction.equals("d")) == true){
+			if(direction.equals("r") == true || direction.equals("d") == true){
 				works = true;
 			}
 
@@ -172,7 +187,7 @@ public class Driver {
 		}
 
 		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), dir, shipWidth);
-		grid.makeShip(tempShip);
+		grid.placeShip(tempShip);
 
 
 
@@ -187,7 +202,7 @@ public class Driver {
 		
 	}
 
-	private Square getSquare(int x, int y, ArrayList<Square> squares){
+	public Square getSquare(int x, int y, ArrayList<Square> squares){
 		for(Square square : squares){
 			if(square.getx() == x && square.gety() == y){
 				return square;
