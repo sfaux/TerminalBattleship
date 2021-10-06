@@ -39,6 +39,7 @@ public class Grid {
 	public boolean bomb(int x, int y) {
 		boolean allShipsSunk = true;
 		boolean isHit = false;
+		shipsRemaining = ships.size();
 		//if (squaresChosen.get(x).get(y).getHasBeenHit() == false) {
 		for(Square square : squaresChosen)
 		{
@@ -49,21 +50,21 @@ public class Grid {
 		}
 
 
-			for (Ship ship : ships) {
-				for (Square square : ship.getSquares()) {
-					if (square.gety() == y && square.getx() == x) {
-						square.setHasBeenHit(true);
-						isHit = true;
-					}
-					if (square.hasBeenHit() == false) {
-						allShipsSunk = false;
-					}
+		for (Ship ship : ships) {
+			for (Square square : ship.getSquares()) {
+				if (square.gety() == y && square.getx() == x) {
+					square.setHasBeenHit(true);
+					isHit = true;
 				}
-
-				if (allShipsSunk == true) {
-					shipsRemaining = shipsRemaining -1;
+				if (square.hasBeenHit() == false) {
+					allShipsSunk = false;
 				}
 			}
+
+			if (allShipsSunk == true) {
+				shipsRemaining = shipsRemaining -1;
+			}
+		}
 
 
 		//} 
@@ -74,6 +75,7 @@ public class Grid {
 
 	public boolean placeShip(Ship s) {
 		for (Square square : s.getSquares()) {
+			System.out.println(square);
 			if ((square.getx() >= gridSize || square.getx() < 0)&&(square.gety() >= gridSize || square.gety() < 0)) {
 				return false;
 			}
@@ -92,7 +94,11 @@ public class Grid {
 
 		
 		for (Square square : s.getSquares()) {
-			square.sethasShip(true);
+			for(Square squareChosen : squaresChosen){
+				if(square.getx() == squareChosen.getx() && square.gety() == squareChosen.gety()){
+					squareChosen.sethasShip(true);
+				}
+			}
 		}
 
 		ships.add(s);

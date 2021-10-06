@@ -206,10 +206,10 @@ public class Driver {
 			dir = 0;
 		}
 
-		System.out.println(tempSquare.getx());
+		/*System.out.println(tempSquare.getx());
 		System.out.println(tempSquare.gety());
 		System.out.println(dir);
-		System.out.println(shipWidth); 
+		System.out.println(shipWidth); */
 
 		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), dir, shipWidth);
 		boolean question = grid.placeShip(tempShip);

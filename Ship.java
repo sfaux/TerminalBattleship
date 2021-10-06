@@ -9,7 +9,9 @@ public class Ship {
 		this.size = size;
 		this.x = x;
 		this.y = y;
+		this.orientation = orientation;
 		findCoord();
+
 	}
 
 	public void findCoord(){
