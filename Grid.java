@@ -76,7 +76,7 @@ public class Grid {
 	public boolean placeShip(Ship s) {
 		for (Square square : s.getSquares()) {
 			System.out.println(square);
-			if ((square.getx() >= gridSize || square.getx() < 0)&&(square.gety() >= gridSize || square.gety() < 0)) {
+			if ((square.getx() >= gridSize || square.getx() < 0) || (square.gety() >= gridSize || square.gety() < 0)) {
 				return false;
 			}
 		}
