@@ -21,8 +21,8 @@ public class Driver {
 		isUser1Turn = true;
 		user1Score = 0;
 		user2Score = 0;
-		String missMarker = ".";
-		String hitMarker = "x";
+		missMarker = ".";
+		hitMarker = "x";
 
 
 	}
@@ -63,16 +63,13 @@ public class Driver {
 
 
 	public Square toSquare(String str){
-		str.toLowerCase();
+		str = str.toLowerCase();
 		char xCoordinate = str.charAt(0);
 		int xCoordinateValue = (int) xCoordinate - 97;
 
 		int yCoordinateValue =  Integer.parseInt(str.substring(1)) - 1;
 
-		if(xCoordinateValue < 0 || yCoordinateValue < 0 || xCoordinateValue > gridSize - 1 || yCoordinateValue > gridSize - 1){
-			return null;
 
-		}
 
 		Square toReturn = new Square(xCoordinateValue, yCoordinateValue);
 
@@ -98,7 +95,7 @@ public class Driver {
 		}
 		System.out.println();
 		for(int row = 1; row <= gridSize; row++){
-			System.out.print("    ");
+			System.out.print("\n   ");
 			for(int numDashes = 0; numDashes < ((4 * gridSize) + 1); numDashes++){
 				System.out.print("-");
 			}
@@ -117,10 +114,10 @@ public class Driver {
 
 					} else if(square.hasBeenHit() == true){
 						if(square.hasShip() == true){
-							toAdd += missMarker;
+							toAdd += hitMarker;
 
 						} else{ //square does not have a ship on
-							toAdd += hitMarker;
+							toAdd += missMarker;
 						}
 					}
 
@@ -129,7 +126,14 @@ public class Driver {
 
 				System.out.print("| " + toAdd + " ");
 			}
+
 		}
+
+		System.out.print("\n   ");
+		for(int numDashes = 0; numDashes < ((4 * gridSize) + 1); numDashes++){
+			System.out.print("-");
+		}
+		System.out.print("\n");
 
 	}
 
@@ -202,8 +206,16 @@ public class Driver {
 			dir = 0;
 		}
 
+		System.out.println(tempSquare.getx());
+		System.out.println(tempSquare.gety());
+		System.out.println(dir);
+		System.out.println(shipWidth); 
+
 		Ship tempShip = new Ship(tempSquare.getx(), tempSquare.gety(), dir, shipWidth);
-		grid.placeShip(tempShip);
+		boolean question = grid.placeShip(tempShip);
+		if(!question){
+			placeShip(grid, shipWidth);
+		}
 
 
 
